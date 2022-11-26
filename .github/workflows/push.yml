@@ -3,7 +3,8 @@ name: Push to Docker Hub
 on:
   push:
     tags:
-      - '*.*.*'
+      # - '*.*.*'
+      - main
 
 jobs:
   build:
@@ -20,6 +21,7 @@ jobs:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
         run: |
           echo $RELEASE_VERSION
+          echo $GITHUB_OUTPUT
           echo ${{ steps.vars.outputs.tag }}
 
       - name: Setup Docker Build
